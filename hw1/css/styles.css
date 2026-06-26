@@ -40,6 +40,22 @@ ol {
     margin: 0 auto;
     text-align: left;
     display: flow-root;
+    margin: 10px;
+}
+
+ol li {
+    list-style-type: upper-roman;
+    list-style-position: inside;
+}
+
+li::marker {
+    font-weight: bold;
+    color: #FF3372;
+}
+
+li span.lang {
+    color: orange;
+    font-weight: bold;
 }
 
 body {
@@ -68,9 +84,6 @@ article a {
     color: yellow;
 }
 
-article ol {
-    margin: 10px;
-}
 
 div#content img {
     float:left;
@@ -115,5 +128,5 @@ div.box {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-            margin-bottom: 3rem;
+    margin-bottom: 3rem;
 }
