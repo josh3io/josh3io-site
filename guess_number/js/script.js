@@ -62,7 +62,7 @@ function checkGuess() {
     if (guess < 1 || guess > 99) {
         feedback.textContent = "Enter a number between 1 and 99";
         feedback.style.color = "red";
-        document.querySelector("#guesses").select();
+        document.querySelector("#playerGuess").select();
         return;
     }
 
