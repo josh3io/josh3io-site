@@ -1,0 +1,57 @@
+body {
+    background-image: url("../img/random_code.webp");
+}
+
+header {
+    background-color: rgba(93,93,93,.5);
+}
+
+header h1 {
+    background-image: radial-gradient(circle at center, #ff735f 0%, #beefaa 100%);
+    text-align: center;
+}
+header h2 {
+    background-image: radial-gradient(circle at center, #ff735f 10%, #beefaa 80%);
+    text-align: center;
+}
+
+#main {
+    background-color: darkseagreen;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 20px;
+    display: grid;
+    place-items: center;
+    height: 45vh;
+    line-height: 1.2rem;
+}
+
+input {
+    margin: 15px;
+    color: #005534;
+    font-weight: 600;
+    width: 80px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#main button {
+    margin: 35px;
+    height: 50px;
+    font-size: 30px;
+    padding: 5px 8px;
+}
+
+div span {
+    color: green;
+}
+
+#feedback {
+    margin-bottom: 24px;
+}
+
+#stats {
+    width: 100%;
+    text-align: right;
+}
