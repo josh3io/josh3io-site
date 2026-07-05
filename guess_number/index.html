@@ -17,7 +17,15 @@
           <input type="text" id="playerGuess" size="5">         
           <button id="guessBtn"> Guess </button> 
           <button id="resetBtn"> Reset </button> 
-          <div id="feedback"></div>
+          <span id="lost">
+              You Lost.<br/> 
+              You should have picked: <span id="randomNumber"></span>
+          </span>
+          <span id="won">
+              Winner winner chicken dinner!
+          </span>
+          <div id="feedback">
+          </div>
           <div>
               Remaining Guesses: <span id="remainingGuesses"></span>
           </div>

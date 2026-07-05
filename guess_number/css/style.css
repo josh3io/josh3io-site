@@ -9,10 +9,12 @@ header {
 header h1 {
     background-image: radial-gradient(circle at center, #ff735f 0%, #beefaa 100%);
     text-align: center;
+    padding: 20px 0px 20px 0px;
 }
 header h2 {
     background-image: radial-gradient(circle at center, #ff735f 10%, #beefaa 80%);
     text-align: center;
+    padding: 10px 0px 10px 0px;
 }
 
 #main {
@@ -54,4 +56,20 @@ div span {
 #stats {
     width: 100%;
     text-align: right;
+}
+
+#lost {
+    color: red;
+    font-size: 1.2rem;
+}
+
+#randomNumber {
+    color: red;
+    font-size: 1.5rem;
+    font-weight: heavy;
+}
+
+#won {
+    color: beige;
+    font-size: 2rem;
 }

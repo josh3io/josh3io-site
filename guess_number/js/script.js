@@ -32,7 +32,9 @@ function initializeGame() {
     console.log("randomNumber: " + randomNumber);
     attempts = 0;
 
-    //hiding the Reset button
+    //hiding elements
+    document.querySelector("#lost").style.display = "none";
+    document.querySelector("#won").style.display = "none";
     document.querySelector("#resetBtn").style.display = "none";
 
     document.querySelector("#guessBtn").style.display = "inline";
@@ -68,17 +70,16 @@ function checkGuess() {
     console.log("Attempts:" + attempts);
     document.querySelector("#remainingGuesses").textContent = maxAttempts - attempts;
     if (guess == randomNumber) {
-        feedback.textContent = "winner winner chicken dinner!";
-        feedback.style.color = "beige";
-        feedback.style.fontSize = "2rem";
+        feedback.textContent = "";
+        document.querySelector("#won").style.display = "inline";
         wins++;
         gameOver();
     } else {
         document.querySelector("#guesses").textContent += guess + " ";
         if (attempts == maxAttempts) {
-            feedback.textContent = "Bad guesser. Game Over.";
-            feedback.style.color = "darkred";
-            feedback.style.fontSize = "1rem";
+            feedback.textContent = "";
+            document.querySelector("#randomNumber").textContent = randomNumber;
+            document.querySelector("#lost").style.display = "inline";
             gameOver();
         } else if (guess > randomNumber) {
             feedback.style.color = "orange";
