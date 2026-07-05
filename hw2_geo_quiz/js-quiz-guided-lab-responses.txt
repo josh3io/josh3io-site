@@ -1,0 +1,100 @@
+Guided Lab: JavaScript Geography Quiz
+Checkpoint Responses
+
+Downloaded: 7/5/2026, 1:18:42 PM
+
+Started: 7/5/2026, 11:58:54 AM
+Completed: 7/5/2026, 12:00:26 PM
+Time spent: 1 minute(s), 32 second(s)
+Lesson 1: Set up the quiz page
+Question:
+Why does the textbox need an id value such as q1?
+
+Student response:
+In order for our script to easily access the value input by the user in the input element, we give it an id for use by a querySelector.
+
+----------------------------------------
+
+Started: 7/5/2026, 12:00:26 PM
+Completed: 7/5/2026, 12:03:10 PM
+Time spent: 2 minute(s), 44 second(s)
+Lesson 2: Add Bootstrap and connect JavaScript
+Question:
+What event is the button listening for, and what function runs when that event happens?
+
+Student response:
+The event is listening for a click on any button element. when a button is clicked, the js function gradeQuiz() is run.
+
+----------------------------------------
+
+Started: 7/5/2026, 12:03:10 PM
+Completed: 7/5/2026, 12:23:58 PM
+Time spent: 20 minute(s), 49 second(s)
+Lesson 3: Validate the first question
+Question:
+Why do we need this line of code?
+
+Student response:
+need to clear any previous error messages when the user submits again
+
+----------------------------------------
+
+Started: 7/5/2026, 12:23:58 PM
+Completed: 7/5/2026, 12:29:13 PM
+Time spent: 5 minute(s), 15 second(s)
+Lesson 4: Grade the first question
+Question:
+What is this line of code doing?
+
+Student response:
+this adds the newly created img element, with img/checkmark.png as its image src, to the id=markImg1 span as a child node at the end of the current array of children nodes of markImg1
+
+----------------------------------------
+
+Started: 7/5/2026, 12:29:13 PM
+Completed: 7/5/2026, 12:40:56 PM
+Time spent: 11 minute(s), 42 second(s)
+Lesson 5: Add a dropdown question and refactor feedback
+Question:
+What value is stored in q2Response when the user selects Missouri, and why?
+
+Student response:
+"mo" is stored because that is the value of the option element. the variable q2Response is assigned from the currently selected option of the dropdown.
+
+----------------------------------------
+
+Started: 7/5/2026, 12:40:56 PM
+Completed: 7/5/2026, 12:42:28 PM
+Time spent: 1 minute(s), 32 second(s)
+Lesson 6: Add checkboxes and radio buttons
+Question:
+Why do the radio buttons all need the same name value?
+
+Student response:
+giving them all the same name makes them the same element and enforces the mutual exclusivity of the selected choice. Using a different name would make a different radio input grouping.
+
+----------------------------------------
+
+Started: 7/5/2026, 12:42:28 PM
+Completed: 7/5/2026, 12:46:15 PM
+Time spent: 3 minute(s), 47 second(s)
+Lesson 7: Randomize radio button choices
+Question:
+What is the main reason for implementing the displayQ4Choices() function?
+
+Student response:
+so we can shuffle the order of the choices so that on every page load, the choices are shown in a randomized order.
+
+----------------------------------------
+
+Started: 7/5/2026, 12:46:15 PM
+Completed: 7/5/2026, 12:57:03 PM
+Time spent: 10 minute(s), 48 second(s)
+Lesson 8: Store total attempts with localStorage
+Question:
+Why does the attempts variable reset after a page reload unless we save it in localStorage?
+
+Student response:
+html is stateless. each pageload clears the session js memory values. localStorage provides persistence to js scripts that execute within the browser environment.
+
+----------------------------------------
