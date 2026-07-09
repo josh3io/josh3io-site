@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title> Sign Up Page </title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="d-flex align-items-center justify-content-center">
+<div class="d-lg-flex container mt-2 p-3 border border-primary">
+  <div class="d-flex header align-items-center justify-content-center">
+    <h1>Sign Up Form</h1>
+  </div>
+<form id="signupForm" action="welcome.html">
+  <div class="d-lg-flex mt-2 container">
+    <label class="row row-striped"> <span class="col">First Name:</span>
+      <input class="col" type="text" id="fName" name="fName"><br>
+    </label>
+  </div>
+
+  <div class="d-lg-flex mt-2 container">
+    <label class="row row-striped"><span class="col">Last Name:</span>
+      <input class="col" type="text" id="lName" name="lName"><br>
+    </label>
+  </div>
+
+  <div class="d-lg-flex mt-2 container">
+    <span class="row row-striped">
+    <span class="col">Gender:</span>
+    <span class="col">
+  <label><input type="radio" name="gender" value="m"> Male</label>
+  <label><input type="radio" name="gender" value="f"> Female</label><br>
+    </span>
+    </span>
+  </div>
+
+  <div class="d-lg-flex mt-2 container">
+    <label class="row row-striped">
+      <span class="col">Zip Code:</span>
+      <input class="col" type="text" id="zip" name="zip">
+      <span id="zipError"></span>
+    </label>
+  </div>
+
+  <div id="zipInfo" class="container mt-0">
+    <span class="row row-striped">
+      <span class="col">&nbsp;</span>
+      <span class="col container">
+        <span class="row">
+          <span class="col">City:</span> 
+          <span class="col" id="city"></span>
+        </span>
+        <span class="row">
+          <span class="col">Latitude:</span> 
+          <span class="col" id="latitude"></span>
+        </span>
+        <span class="row">
+          <span class="col">Longitude:</span> 
+          <span class="col" id="longitude"></span>
+        </span>
+      </span>
+    </span>
+  </div>
+
+  <div class="d-lg-flex mt-2 container">
+    <label class="row row-striped">
+      <span class="col">State:</span>
+      <select class="col" id="state" name="state">
+        <option value="">Loading states...</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="d-lg-flex mt-2 container">
+  <label class="row row-striped"><span class="col">Select a County:</span>
+     <select class="col" id="county" name="county"></select><br>
+  </label>
+  </div>
+
+  <div class="d-lg-flex mt-2 container">
+    <label class="row row-striped">
+      <span class="col">Desired Username:</span>
+      <input class="col" type="text" id="username" name="username">
+    </label>
+    <span class="row row-striped">
+      <span class="col"></span>
+      <span class="col" id="usernameError"></span><br>
+    </span>
+  </div>
+
+  <div class="d-lg-flex mt-2 container">
+    <label class="row row-striped">
+      <span class="col">Password:</span>
+      <input class="col" type="password" id="password" name="password">
+    </label>
+    <div id="suggestedPassword" class="d-none">
+      <span id="passwordMessage" class="font-weight-light font-italic">Suggested password (click to use):</span>
+      <span id="passwordSuggestion"></span>
+    </div>
+    </span>
+  </div>
+
+  <div class="d-lg-flex mt-2 container">
+    <label class="row row-striped">
+      <span class="col">Type Password Again:</span>
+      <input class="col" type="password" id="passwordAgain" name="passwordAgain">
+    </label>
+    <span class="row row-striped">
+      <span class="col"></span>
+      <span class="col text-danger" id="passwordError"></span>
+    </span>
+  </div>
+
+  <div class="d-lg-flex mt-2">
+  <button class="w-100 p-2 mt-4 mb-2">Sign up!</button>
+  </div>
+</form>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
