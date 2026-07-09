@@ -162,12 +162,12 @@ function validatePassword() {
   let errorSpan = document.querySelector("#passwordError");
   errorSpan.textContent = "";
 
-  if (password.length >= 6 && passwordAgain.length >= 6) {
+  if (password.length >= 6) {
     if (password != passwordAgain) {
       errorSpan.textContent = "Password confirmation doesn't match";
       return false;
     }
-  } else if (password.length < 6) {
+  } else {
     errorSpan.textContent = "Password must be at least 6 characters";
     return false;
   }
@@ -198,7 +198,7 @@ async function validateForm(event) {
   }
 
   if (!validatePassword()) {
-    isvalid = false;
+    isValid = false;
   }
 
   if (isValid) {
