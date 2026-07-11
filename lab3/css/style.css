@@ -1,10 +1,11 @@
 div {
   margin-top: 10px;
+  padding: 1px;
 }
 
-.row-striped:nth-of-type(odd) {
-  background-color: #f4f4f4;
+.striped:nth-of-type(odd) {
+  background-color: #e0e9e0;
 }
-.row-striped:nth-of-type(even) {
-  background-color: #ffffff;
+.striped:nth-of-type(even) {
+  background-color: #99e0e0;
 }

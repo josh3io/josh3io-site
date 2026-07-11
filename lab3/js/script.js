@@ -115,11 +115,11 @@ async function checkUsername() {
 
   if (data.available) {
     usernameError.textContent = "Username available!";
-    usernameError.style.color = "green";
+    usernameError.className = "col text-success";
     return true;
   } else {
     usernameError.textContent = "Username taken";
-    usernameError.style.color = "red";
+    usernameError.className = "col text-danger";
     return false;
   }
 }
@@ -174,27 +174,75 @@ function validatePassword() {
   return true;
 }
 
+function validateFieldSet(name, fieldId) {
+  try {
+    let value = document.querySelector(`#${fieldId}`).value;
+
+    if (value.length === 0) {
+      document.querySelector(`#${fieldId}Error`).textContent = `${name} is required`
+      return false;
+    } else {
+      document.querySelector(`#${fieldId}Error`).textContent = ""
+    }
+
+    return true;
+  } catch(error) {
+    console.error(`Failed to validate #${fieldId}: ${error}`);
+    return false;
+  }
+}
+
+function validateRadioSet(name, fieldName) {
+  try {
+    let checkedInput = document.querySelector(`input[name="${fieldName}"]:checked`);
+    if (checkedInput === null) {
+      document.querySelector(`#${fieldName}Error`).textContent = `${name} is required`
+      return false;
+    }
+
+    let value = checkedInput.value;
+
+    if (value.length === 0) {
+      document.querySelector(`#${fieldName}Error`).textContent = `${name} is required`
+      return false;
+    } else {
+      document.querySelector(`#${fieldName}Error`).textContent = ""
+    }
+
+    return true;
+  } catch(error) {
+    console.error(`Failed to validate radio field ${fieldName}: ${error}`);
+    return false;
+  }
+}
 
 async function validateForm(event) {
   event.preventDefault();
 
   let isValid = true;
 
-  let username = document.querySelector("#username").value;
-  let usernameError = document.querySelector("#usernameError");
-
-  usernameError.textContent = "";
-
-  if (username.length === 0) {
-    usernameError.textContent = "Username required";
-    usernameError.style.color = "red";
-    isValid = false;
-  } else {
-    let usernameAvailable = await checkUsername();
-
-    if (usernameAvailable === false) {
+  [
+    ['Username','username'],
+    ['First name', 'fName'],
+    ['Last name', 'lName'],
+    ['Zip code', 'zip'],
+    ['State', 'state'],
+    ['County', 'county'],
+    ['Password', 'password']
+  ].forEach((formField) => {
+    if (!validateFieldSet(formField[0], formField[1])) {
       isValid = false;
     }
+  })
+
+  if (!validateRadioSet('Gender', 'gender')) {
+    isValid = false;
+  }
+
+  let usernameAvailable = await checkUsername();
+
+  if (usernameAvailable === false) {
+    isValid = false;
   }
 
   if (!validatePassword()) {
@@ -206,9 +254,30 @@ async function validateForm(event) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", loadStates);
-document.querySelector("#username").addEventListener("change", checkUsername);
-document.querySelector("#signupForm").addEventListener("submit", validateForm);
-document.querySelector("#state").addEventListener("change", loadCounties);
-document.querySelector("#password").addEventListener("click", suggestPassword);
-document.querySelector("#suggestedPassword").addEventListener("click", populatePassword);
+function clearError(event) {
+  let elemId = event.target.id;
+  try {
+    document.querySelector(`#${elemId}Error`).textContent = "";
+    document.querySelector(`#${elemId}Error`).className = "col text-danger";
+  } catch(error) {
+    try {
+      let elemName = event.target.name;
+      document.querySelector(`#${elemName}Error`).textContent = "";
+      document.querySelector(`#${elemName}Error`).className = "col text-danger";
+    } catch(error) {
+      console.error(`Unable to clear error field for ${event.target}`);
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadStates();
+  document.querySelector("#username").addEventListener("change", checkUsername);
+  document.querySelector("#signupForm").addEventListener("submit", validateForm);
+  document.querySelector("#state").addEventListener("change", loadCounties);
+  document.querySelector("#password").addEventListener("click", suggestPassword);
+  document.querySelector("#suggestedPassword").addEventListener("click", populatePassword);
+  document.querySelectorAll("input, select").forEach(elem => {
+    elem.addEventListener("focus", clearError);
+  });
+});
