@@ -9,3 +9,7 @@ div {
 .striped:nth-of-type(even) {
   background-color: #99e0e0;
 }
+
+div.outer {
+  max-width: 720px;
+}
