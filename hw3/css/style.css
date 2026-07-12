@@ -1,0 +1,60 @@
+body {
+  background-color: #85bb65;
+}
+
+
+div {
+  margin-top: 10px;
+  padding: 1px;
+  font-weight: bold;
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 150px;
+  border: 2px solid #003399;
+  text-align: center;
+}
+
+.striped:nth-of-type(odd) {
+  background-color: #e0e9e0;
+}
+.striped:nth-of-type(even) {
+  background-color: #99e0e0;
+}
+
+div.outer {
+  max-width: 720px;
+}
+
+select {
+  margin: 5px 0px 15px 0px;
+  width: 300px;
+}
+
+button {
+  padding: 1px;
+  margin: 5px;
+}
+
+div.note {
+  border: 1px solid #993300;
+  background-color: #8fbf6f;
+  min-height: 80px;
+}
+
+div.note > img.icon {
+  position:relative;
+  float:left;
+  width: 80px;
+  height: 80px;
+}
+
+div.note div {
+}
+
+
+
+div.box {
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.2);
+}
