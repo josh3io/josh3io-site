@@ -78,8 +78,11 @@ async function checkRates(event) {
     return;
   }
 
-  let amount = parseInt(document.querySelector("#amount").value);
+  let amount = parseInt(document.querySelector("#amount").value * 10000) / 10000;
+  let amountError = document.querySelector('#amountError');
+  amountError.textContent = "";
   if (amount <= 0) {
+    amountError.textContent = "Invalid amount. must be numeric. Amount will be rounded to the nearest 0.00001";
     return;
   }
 

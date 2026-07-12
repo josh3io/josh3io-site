@@ -15,7 +15,7 @@
     <div class="note box">
       <img class="icon" src="img/1F4DD.svg" alt="note icon" >
       <div>
-        Fetch the latest currency exchange rates.<br>
+        Fetch the latest Euro exchange rates.<br>
         To reduce network traffic, exchange rates are cached locally for 24 hours.
       </div>
     </div>
@@ -26,7 +26,8 @@
         <div>Check conversion rates for:</div>
         <!-- only euro is supported as base for free API -->
         <div class="d-flex align-items-center justify-content-center">
-          <input type="text" value="1" id="amount" class="m-1 form-control">Euro to
+          <input type="text" value="1" id="amount" class="m-1 form-control">Euro to<br>
+          <span id="amountError" class="text-danger"></span>
         </div>
       </div>
       <div>
