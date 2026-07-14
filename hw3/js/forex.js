@@ -1,7 +1,25 @@
 
 const API_KEY = "5e577bf14884ff3a257b8a49b8e21cea";
+const API_KEY_2 = "be8057b5cf4bdfe05786550b97833f83";
 
 const API_BASE_URL = "https://data.fixer.io/api";
+
+async function fixerApiCall(_url, api_key=null) {
+  let url;
+  if (api_key) {
+    url = _url.replace("_API_KEY_", api_key);
+  } else {
+    url = _url.replace("_API_KEY_", API_KEY);
+  }
+  let response = await fetch(url);
+  if (response.status == 429 && api_key != API_KEY_2) {
+    // api limit reached, try backup key
+    return fixerApiCall(url, API_KEY_2);
+  }
+
+  return response;
+}
+
 
 async function getSymbols() {
   try {
@@ -9,8 +27,8 @@ async function getSymbols() {
 
     // get symbols list at most once per day
     if (symbolsData == null || symbolsData.timestamp < Date.now() - 86400 * 1000) {
-      let url = `${API_BASE_URL}/symbols?access_key=${API_KEY}`;
-      let response = await fetch(url);
+      let url = `${API_BASE_URL}/symbols?access_key=_API_KEY_`;
+      let response = await fixerApiCall(url);
       let data = await response.json();
 
       symbolsData = {
@@ -103,8 +121,8 @@ async function checkRates(event) {
 
   try {
     if (cacheInvalid) {
-      let url = `${API_BASE_URL}/latest?access_key=${API_KEY}&base=EUR&symbols=${targets.join(',')}`
-      let response = await fetch(url);
+      let url = `${API_BASE_URL}/latest?access_key=_API_KEY_&base=EUR&symbols=${targets.join(',')}`
+      let response = await fixerApiCall(url);
       let data = await response.json();
 
       let now = Date.now();
