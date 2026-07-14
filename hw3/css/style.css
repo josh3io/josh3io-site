@@ -52,4 +52,11 @@ div.note > img.icon {
 
 div.box {
   box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+#amountError {
+  margin: 0px;
+  padding: 10px;
+  border: 1px solid red;
 }

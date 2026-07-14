@@ -66,6 +66,7 @@ function displayRates(amount, targets) {
   let ratesDiv = document.querySelector('#rates');
   ratesDiv.classList.remove("d-none");
   ratesDiv.textContent = "";
+  document.querySelector('#amountError').textContent = "";
 
   let symbolsData = JSON.parse(localStorage.getItem("symbols"));
   let ratesCache = JSON.parse(localStorage.getItem("rates"));
@@ -92,16 +93,26 @@ async function checkRates(event) {
   const selectedOpts = document.querySelector('#symbols').selectedOptions;
   const targets = Array.from(selectedOpts).map(option => option.value);
 
-  if (!targets) {
+  let amountError = document.querySelector('#amountError');
+
+  if (targets.length == 0) {
+    amountError.textContent = "Must pick at least one target currency";
+    amountError.classList.remove('d-none');
+    return;
+  }
+
+  if (targets.length > 10) {
+    amountError.textContent = "Choose at most 10 target currencies";
+    amountError.classList.remove('d-none');
     return;
   }
 
   let amount = parseInt(document.querySelector("#amount").value * 10000) / 10000;
-  let amountError = document.querySelector('#amountError');
   amountError.textContent = "";
-  if (amount <= 0) {
-    amountError.textContent = "Invalid amount. must be numeric. Amount will be rounded to the nearest 0.00001";
-    return;
+  if (!(amount > 0)) {
+    amountError.textContent = "Invalid amount. must be a positive numeric value. Amount will be rounded to the nearest 0.00001";
+    amountError.classList.remove('d-none');
+    return false;
   }
 
   let ratesCache = JSON.parse(localStorage.getItem("rates"));
@@ -150,6 +161,7 @@ function clearResults() {
   document.querySelector('#rates').textContent = "";
   document.querySelector('#rates').classList.add("d-none");
   document.querySelector('#displayBase').classList.add("d-none");
+  document.querySelector('#amountError').classList.add("d-none");
 }
 
 function updateSubmitBtn() {
