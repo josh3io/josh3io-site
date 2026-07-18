@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Solar System</title>
+  <%- include('partials/head.ejs') %>
+</head>
+<body>
+  <h1>The Solar System</h1>
+  <%- include('partials/nav.ejs') %>
+  <h2><%= planetName %></h2>
+  <div class="" id="planet">
+    <div class="mw-50">
+      <img id="planetImage" src="<%= planetInfo.image %>">
+    </div>
+    <div id="planetInfoTable" class="info container mw-50 text-center fw-medium">
+      <div class="row p-2 m-2">
+        <div class="col col-4">Distance from sun:</div>
+        <div class="col"><%= planetInfo.distanceFromSun %></div>
+      </div>
+      <div class="row p-2 m-2">
+        <div class="col col-4">Day length:</div>
+        <div class="col"><%= planetInfo.oneEarthDay %></div>
+      </div>
+      <div class="row p-2 m-2">
+        <div class="col col-4">Year length:</div>
+        <div class="col"><%= planetInfo.yearLength %></div>
+      </div>
+      <div class="row p-2 m-2">
+        <div class="col col-4">Radius:</div>
+        <div class="col"><%= planetInfo.radius %></div>
+      </div>
+      <div class="row p-2 m-2">
+        <div class="col col-4">Website link:</div>
+        <div class="col"><a href="<%= planetInfo.websiteLink %>">Info Link</a></div>
+      </div>
+    </div>
+  </div>
+  <%- include('partials/footer.ejs') %>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector("#<%= planetName %>").classList.add("card-selected");
+    });
+  </script>
+</body>
+</html>
+
+<!--
+{
+  image: 'https://solarsystem.nasa.gov/system/stellar_items/image_files/4_earth.jpg',
+  distanceFromSun: '91.433 million miles',
+  yearLength: '365 Earth Days',
+  description: 'Our home planet is the third planet from the Sun, and the only place we know of so far that’s inhabited by living things. While Earth is only the fifth largest planet in the solar system, it is the only world in our solar system with liquid water on the surface. Just slightly larger than nearby Venus, Earth is the biggest of the four planets closest to the Sun, all of which are made of rock and metal.',
+  radius: 3959,
+  websiteLink: 'https://solarsystem.nasa.gov/planets/earth/overview/',
+  oneEarthDay: '24 hours',
+  moons: 1
+  }-->

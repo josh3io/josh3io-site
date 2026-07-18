@@ -1,0 +1,25 @@
+body {
+  background-color: #CBE2F6;
+}
+
+img {
+  max-width: 100%;
+}
+
+#planetImage {
+  max-width: 40%;
+}
+
+.row:nth-child(even) {
+  background-color: #CCC;
+}
+.row:nth-child(odd) {
+  background-color: #EEE;
+}
+
+.card-selected {
+  background-color: #00E;
+}
+.card-selected > a {
+  color: white;
+}
