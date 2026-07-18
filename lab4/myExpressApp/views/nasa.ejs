@@ -12,7 +12,7 @@
   <h3><%= data.title %></h3>
   <img src="<%= data.hdurl %>">
   <div class="description">
-    Copyright: <%= data.copyright %>
+    <%= data.copyright ? `Copyright: ${data.copyright}` : "" %>
   </div>
   <div class="description">
     <%= data.explanation %>
