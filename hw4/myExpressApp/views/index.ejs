@@ -8,6 +8,36 @@ body {
 <body class="container text-align-center">
     <h1 class="header_h1 text-center">Computer Languages</h1>
     <%- include('partials/nav.ejs') %>
+    <main>
+      <div id="content">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h2 class="text-center">Overview</h2>
+              <div class="card m-4 p-4">
+                Here is some content about some great programming lanuages.
+                <br>
+                I will share some information about a few of my favorites:
+                <ol>
+                    <li><span class="lang">C</span>, a classic systems language</li>
+                    <li><span class="lang">Javascript</span>, a language developed for the web</li>
+                    <li><span class="lang">Rust</span>, a modern systems lanaguage</li>
+                </ol>
+                    <p>These three languages represent different philosophies and solve different problems. 
+              </div>
+            </div>
+            <div class="d-flex">
+                <div class="card m-4 p-4">C prioritizes direct hardware access and efficiency for systems programming. </div>
+                <div class="card m-4 p-4">JavaScript brings interactivity to the web and now runs everywhere from browsers to servers. </div>
+                <div class="card m-4 p-4">Rust combines the performance of C with modern safety guarantees, edivminating entire categories of bugs at compile time. </div>
+            </div>
+            <div class="card m-4 p-4">
+            Whether you're building an operating system, a web application, or infrastructure software, understanding these languages gives you powerful tools for different domains.
+            </div>
+        </article>
+      </div>
+    </main>
+
     <%- include('partials/footer.ejs') %>
 </body>
 </html>
