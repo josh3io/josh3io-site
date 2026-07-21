@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Computer Languages</title>
+  <%- include('partials/head.ejs') %>
+</head>
+<body>
+  <h1 class="text-center bg-light">Computer Languages - Hello <s>World</s>Superhero!</h1>
+    <%- include('partials/nav.ejs') %>
+    <div class="container bg-light">
+      <h2 class="text-center">Example Hello <s>World</s>Superhero for <%= lang %></h2>
+      <div class="container w-50 border border-1 border-black bg-body-secondary">
+        <%- include('partials/'+lang+'_helloWorld.ejs') %>
+      </div>
+      <%- include('partials/footer.ejs') %>
+    </div>
+</body>
+</html>
+

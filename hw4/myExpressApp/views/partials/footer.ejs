@@ -1,0 +1,13 @@
+<div class="footer">
+  <hr>
+  Website © Josh Goldberg, 2026
+  <br/>
+  <a href="https://unsplash.com">Background image from Unsplash</a>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      let response = await fetch('/computer_image');
+      let data = await response.json();
+      document.querySelector('body').style.background = `url("${data.image}")`;
+    });
+  </script>
+</div>

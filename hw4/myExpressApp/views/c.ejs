@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/head.ejs') %>
+<body>
+    <h1 class="text-center bg-light">Computer Languages</h1>
+    <%- include('partials/nav.ejs') %>
+    <div class="container align-items-center">
+      <div class="row">
+        <h1 class="col text-center"><%= lang %></h1>
+      </div>
+      <div class="row">
+        <div class="col">
+        <%- include('partials/lang.ejs') %>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>
+
