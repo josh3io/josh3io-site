@@ -1,0 +1,76 @@
+<%- include("partials/header.ejs") %>
+<body>
+
+  <div class="container py-5">
+    <h1 class="text-center mb-4"> Quote Finder </h1>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Search by Keyword</h5>
+            <form action="/searchByKeyword">
+              <label class="form-label">Keyword:</label>
+              <input type="text" name="keyword" class="form-control mb-3">
+              <button class="btn btn-primary w-100">Search by Keyword</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Search by Likes</h5>
+            <form action="/searchByLikes">
+              <label class="form-label">Search by Likes total between</label>
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <input type="text" name="minLikes" class="form-control"> <span>and</span> <input type="text" name="maxLikes" class="form-control">
+              </div>
+              <button class="btn btn-primary w-100">Search by Likes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Search by Author</h5>
+            <form action="/searchByAuthor">
+              <select name="authorId" class="form-select mb-3">
+                <% for (author of authors) { %>
+                  <option value="<%= author.authorId %>">
+                    <%= author.firstName %> <%= author.lastName %>
+                  </option>
+                <% } %>
+              </select>
+              <button class="btn btn-primary w-100">Search by Author</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Search by Category</h5>
+            <form action="/searchByCategory">
+              <select name="category" class="form-select mb-3">
+                <% for (category of categories) { %>
+                  <option value="<%= category.category %>">
+                    <%= category.category %>
+                  </option>
+                <% } %>
+              </select>
+              <button class="btn btn-primary w-100">Search by Category</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%- include("partials/footer.ejs") %>
+</body>
+</html>

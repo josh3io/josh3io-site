@@ -1,0 +1,35 @@
+body {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.quote-card {
+  border-left: 4px solid #0d6efd;
+}
+
+.quote-card p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #333;
+}
+
+footer {
+  margin-top: auto;
+}
