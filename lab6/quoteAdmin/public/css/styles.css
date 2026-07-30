@@ -1,0 +1,43 @@
+body {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 0.5rem;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.list-group-item {
+  border-left: none;
+  border-right: none;
+}
+
+.list-group-item:first-child {
+  border-top: none;
+}
+
+.striped:nth-of-type(odd) {
+  background-color: #eee;
+}
+.striped:nth-of-type(even) {
+  background-color: #ddd;
+}
+
+footer {
+  margin-top: auto;
+}
+
+

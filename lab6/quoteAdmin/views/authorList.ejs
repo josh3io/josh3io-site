@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+ <div class="container row">
+   <h1 class="col"> Update/Delete Authors </h1>
+   <div class="col text-end" >
+     <a class="btn btn-md btn-outline-primary" href="/author/new">Add Author</a>
+   </div>
+ </div>
+
+ <div class="list-group">
+ <% for (i=0; i < authors.length; i++) { %>
+
+   <div class="striped list-group-item d-flex justify-content-between align-items-center">
+     <span>
+       <%=authors[i].firstName%>
+       <%=authors[i].lastName%>
+     </span>
+     <span>
+       <a class="btn btn-sm btn-outline-primary me-1" href="/author/edit?authorId=<%=authors[i].authorId%>">UPDATE</a>
+       <a class="btn btn-sm btn-outline-danger" href="/author/delete?authorId=<%=authors[i].authorId%>">DELETE</a>
+     </span>
+   </div>
+
+ <% } %>
+ </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
+</body>
+</html>

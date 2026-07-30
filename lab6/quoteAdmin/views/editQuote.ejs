@@ -1,0 +1,47 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm p-4">
+
+<h1 class="mb-4">Edit a Quote</h1>
+
+
+    <form method="POST" action="/quote/edit">
+      <input type="hidden" name="quoteId" value="<%= quote.quoteId%>">
+      <div class="mb-3">
+        <label class="form-label">Quote:</label>
+        <textarea class="form-control" name="quote" rows="3"><%=quote.quote%></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Author:</label>
+        <select class="form-select" name="authorId">
+          <% for (i=0; i < authors.length; i++) { %>
+          <option
+            <%= authors[i].authorId == quote.authorId ? 'selected' : '' %>
+            value="<%=authors[i].authorId%>">
+            <%=authors[i].firstName%> <%=authors[i].lastName%>
+          </option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Category:</label>
+        <input class="form-control" type="text" name="category" value="<%=quote.category%>">
+      </div>
+      <button class="btn btn-primary">Edit Quote</button>
+    </form>
+
+    <% if (typeof message != "undefined"){ %>
+  		 <h3 class="mt-3 text-success"><%=message%></h3>
+    <% } %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
+</body>
+</html>

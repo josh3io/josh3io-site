@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm p-4">
+
+<h1 class="mb-4">Adding a new Quote</h1>
+
+
+    <form method="POST" action="/quote/new">
+      <div class="mb-3">
+        <label class="form-label">Quote:</label>
+        <textarea class="form-control" name="quote" rows="3"></textarea>
+      </div>
+      <div class="mb-3 position-relative">
+        <label class="form-label">Author: 
+          <a class="position-absolute end-0 btn btn-sm btn-light rounded-pill" href="/author/new">add new author</a>
+        </label>
+        <select class="form-select" name="authorId">
+          <% for (i=0; i < authors.length; i++) { %>
+          <option value="%<=authors[i].authorId%>"><%=authors[i].firstName%> <%=authors[i].lastName%></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Category:</label>
+        <input class="form-control" type="text" name="category">
+      </div>
+      <button class="btn btn-primary">Add Quote</button>
+    </form>
+
+    <% if (typeof message != "undefined"){ %>
+  		 <h3 class="mt-3 text-success"><%=message%></h3>
+    <% } %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
+</body>
+</html>
