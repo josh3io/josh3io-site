@@ -11,12 +11,12 @@
     <form method="POST" action="/quote/edit">
       <input type="hidden" name="quoteId" value="<%= quote.quoteId%>">
       <div class="mb-3">
-        <label class="form-label">Quote:</label>
-        <textarea class="form-control" name="quote" rows="3"><%=quote.quote%></textarea>
+        <label class="form-label" for="quote">Quote:</label>
+        <textarea class="form-control" name="quote" id="quote" rows="3"><%=quote.quote%></textarea>
       </div>
       <div class="mb-3">
-        <label class="form-label">Author:</label>
-        <select class="form-select" name="authorId">
+        <label class="form-label" for="authorId">Author:</label>
+        <select class="form-select" name="authorId" id="authorId">
           <% for (i=0; i < authors.length; i++) { %>
           <option
             <%= authors[i].authorId == quote.authorId ? 'selected' : '' %>
@@ -27,17 +27,18 @@
         </select>
       </div>
       <div class="mb-3">
-        <label class="form-label">Category:</label>
-        <select class="form-select" name="category">
-          <option value="">Select or create</option>
+        <label class="form-label" for="category">Select a Category:</label>
+        <select class="form-select" name="category" id="category">
+          <option value="">Select one or create new below</option>
           <% for (i=0; i < categories.length; i++) { %>
           <option 
             <%= categories[i].category == quote.category ? 'selected' : '' %>
           value="<%=categories[i].category%>"><%=categories[i].category%></option>
           <% } %>
         </select>
-        <label class="form-label">Create a new category:</label>
-        <input class="form-control" type="text" name="new_category">
+        <label class="form-label" for="new_category">or create a new category:</label>
+        <div id="hideNewCategory" class="disabledDiv rounded d-none"></div>
+        <input class="form-control" type="text" name="new_category" id="new_category">
       </div>
       <button class="btn btn-primary">Edit Quote</button>
     </form>

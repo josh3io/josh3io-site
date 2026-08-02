@@ -10,47 +10,47 @@
 
     <form method="POST" action="/author/new">
       <div class="mb-3">
-        <label class="form-label">First Name:</label>
-        <input class="form-control" type="text" name="fName">
+        <label class="form-label" for="fName">First Name:</label>
+        <input class="form-control" type="text" name="fName" id="fName">
       </div>
       <div class="mb-3">
-        <label class="form-label">Last Name:</label>
-        <input class="form-control" type="text" name="lName">
+        <label class="form-label" for="lName">Last Name:</label>
+        <input class="form-control" type="text" name="lName" id="lName">
       </div>
       <div class="mb-3 container row">
         <div class="col">
-          <label class="form-label">Date of Birth:</label>
-          <input class="form-control" type="date" name="birthDate">
+          <label class="form-label" for="birthDate">Date of Birth:</label>
+          <input class="form-control" type="date" name="birthDate" id="birthDate">
         </div>
         <div class="col">
-          <label class="form-label">Date of Death:</label>
-          <input class="form-control" type="date" name="deathDate">
+          <label class="form-label" for="deathDate">Date of Death:</label>
+          <input class="form-control" type="date" name="deathDate" id="deathDate">
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label d-block">Sex:</label>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="sex" value="M"><label class="form-check-label">Male</label>
+          <input class="form-check-input" type="radio" name="sex" value="M" id="sexM"><label class="form-check-label" for="sexM">Male</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="sex" value="F"><label class="form-check-label">Female</label>
+          <input class="form-check-input" type="radio" name="sex" value="F" id="sexF"><label class="form-check-label" for="sexF">Female</label>
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label">Profession:</label>
-        <input class="form-control" type="text" name="profession">
+        <label class="form-label" for="profession">Profession:</label>
+        <input class="form-control" type="text" name="profession" id="profession">
       </div>
       <div class="mb-3">
-        <label class="form-label">Country:</label>
-        <input class="form-control" type="text" name="country">
+        <label class="form-label" for="country">Country:</label>
+        <input class="form-control" type="text" name="country" id="country">
       </div>
       <div class="mb-3">
-        <label class="form-label">Portrait (url):</label>
-        <input class="form-control" type="text" name="portrait">
+        <label class="form-label" for="portrait">Portrait (url):</label>
+        <input class="form-control" type="text" name="portrait" id="portrait">
       </div>
       <div class="mb-3">
-        <label class="form-label">Biography:</label>
-        <textarea class="form-control" name="biography" rows="3"></textarea>
+        <label class="form-label" for="biography">Biography:</label>
+        <textarea class="form-control" name="biography" id="biography" rows="3"></textarea>
       </div>
       <button class="btn btn-primary">Add Author</button>
     </form>

@@ -10,47 +10,47 @@
     <form method="POST" action="/author/edit">
       <input type="hidden" name="authorId" value="<%= authorId %>">
       <div class="mb-3">
-        <label class="form-label">First Name:</label>
-        <input class="form-control" type="text" name="fName" value="<%= firstName %>">
+        <label class="form-label" for="fName">First Name:</label>
+        <input class="form-control" type="text" name="fName" id="fName" value="<%= firstName %>">
       </div>
       <div class="mb-3">
-        <label class="form-label">Last Name:</label>
-        <input class="form-control" type="text" name="lName" value="<%= lastName %>">
+        <label class="form-label" for="lName">Last Name:</label>
+        <input class="form-control" type="text" name="lName" id="lName" value="<%= lastName %>">
       </div>
       <div class="mb-3 container row">
         <div class="col">
-          <label class="form-label">Date of Birth:</label>
-          <input class="form-control" type="date" name="birthDate" value="<%= new Date(dob).toISOString().split('T')[0] %>">
+          <label class="form-label" for="birthDate">Date of Birth:</label>
+          <input class="form-control" type="date" name="birthDate" id="birthDate" value="<%= new Date(dob).toISOString().split('T')[0] %>">
         </div>
         <div class="col">
-          <label class="form-label">Date of Death:</label>
-          <input class="form-control" type="date" name="deathDate" value="<%= new Date(dod).toISOString().split('T')[0]%>">
+          <label class="form-label" for="deathDate">Date of Death:</label>
+          <input class="form-control" type="date" name="deathDate" id="deathDate" value="<%= new Date(dod).toISOString().split('T')[0]%>">
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label d-block">Sex:</label>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="sex" value="M" <%= sex == 'M' ? 'checked' : '' %> ><label class="form-check-label">Male</label>
+          <input class="form-check-input" type="radio" name="sex" value="M" id="sexM" <%= sex == 'M' ? 'checked' : '' %> ><label class="form-check-label" for="sexM">Male</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="sex" value="F" <%= sex == 'F' ? 'checked' : '' %> ><label class="form-check-label">Female</label>
+          <input class="form-check-input" type="radio" name="sex" value="F" id="sexF" <%= sex == 'F' ? 'checked' : '' %> ><label class="form-check-label" for="sexF">Female</label>
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label">Profession:</label>
-        <input class="form-control" type="text" name="profession" value="<%= profession %>">
+        <label class="form-label" for="profession">Profession:</label>
+        <input class="form-control" type="text" name="profession" id="profession" value="<%= profession %>">
       </div>
       <div class="mb-3">
-        <label class="form-label">Country:</label>
-        <input class="form-control" type="text" name="country" value="<%= country %>">
+        <label class="form-label" for="country">Country:</label>
+        <input class="form-control" type="text" name="country" id="country" value="<%= country %>">
       </div>
       <div class="mb-3">
-        <label class="form-label">Portrait (url):</label>
-        <input class="form-control" type="text" name="portrait" value="<%= portrait %>">
+        <label class="form-label" for="portrait">Portrait (url):</label>
+        <input class="form-control" type="text" name="portrait" id="portrait" value="<%= portrait %>">
       </div>
       <div class="mb-3">
-        <label class="form-label">Biography:</label>
-        <textarea class="form-control" name="biography" rows="3"><%= biography %></textarea>
+        <label class="form-label" for="biography">Biography:</label>
+        <textarea class="form-control" name="biography" id="biography" rows="3"><%= biography %></textarea>
       </div>
       <button class="btn btn-primary">Edit Author</button>
     </form>

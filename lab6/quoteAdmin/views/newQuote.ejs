@@ -10,29 +10,30 @@
 
     <form method="POST" action="/quote/new">
       <div class="mb-3">
-        <label class="form-label">Quote:</label>
-        <textarea class="form-control" name="quote" rows="3"></textarea>
+        <label class="form-label" for="quote">Quote:</label>
+        <textarea class="form-control" name="quote" id="quote" rows="3"></textarea>
       </div>
       <div class="mb-3 position-relative">
-        <label class="form-label">Author: 
+        <label class="form-label" for="authorId">Author:
           <a class="position-absolute end-0 btn btn-sm btn-light rounded-pill" href="/author/new">add new author</a>
         </label>
-        <select class="form-select" name="authorId">
+        <select class="form-select" name="authorId" id="authorId">
           <% for (i=0; i < authors.length; i++) { %>
           <option value="<%=authors[i].authorId%>"><%=authors[i].firstName%> <%=authors[i].lastName%></option>
           <% } %>
         </select>
       </div>
       <div class="mb-3">
-        <label class="form-label">Category:</label>
-        <select class="form-select" name="category">
-          <option value="">Select one...</option>
+        <label class="form-label" for="category">Select a Category:</label>
+        <select class="form-select" name="category" id="category">
+          <option value="">Select one or create new below</option>
           <% for (i=0; i < categories.length; i++) { %>
           <option value="<%=categories[i].category%>"><%=categories[i].category%></option>
           <% } %>
         </select>
-        or create a new category
-        <input class="form-control" type="text" name="new_category">
+        <label class="form-label" for="new_category">or create a new category:</label>
+        <div id="hideNewCategory" class="disabledDiv rounded d-none"></div>
+        <input class="form-control" type="text" name="new_category" id="new_category">
       </div>
       <button class="btn btn-primary">Add Quote</button>
     </form>
