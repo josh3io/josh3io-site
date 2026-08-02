@@ -184,6 +184,9 @@ app.post("/quote/edit", async function(req, res){
 
   let sql = `SELECT DISTINCT category FROM q_quotes ORDER BY category`;
   const [categories] = await pool.query(sql)
+  sql = `SELECT authorId, firstName, lastName FROM q_authors ORDER BY lastName`
+  const [authors] = await pool.query(sql)
+
   if (!category) {
     res.render("editQuote", {authors, categories, "message": "You must supply a category"});
     return;
