@@ -53,7 +53,7 @@ app.post("/author/new", async function(req, res){
   let sql = `INSERT INTO q_authors
              (firstName, lastName, dob, dod, sex, profession, country, portrait, biography)
               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-  let params = [fName, lName, birthDate, dod, sex, profession, country, portrait, biography];
+  let params = [fName, lName, birthDate, deathDate, sex, profession, country, portrait, biography];
   const [rows] = await pool.query(sql, params);
   res.render("newAuthor",
              {"message": "Author added!"});
@@ -78,6 +78,7 @@ app.post("/author/edit", async function(req, res){
             SET firstName = ?,
                 lastName = ?,
                 dob = ?,
+                dod = ?,
                 sex = ?,
                 profession = ?,
                 country = ?,
@@ -87,7 +88,9 @@ app.post("/author/edit", async function(req, res){
 
 
   let params = [req.body.fName,
-              req.body.lName, req.body.dob,
+              req.body.lName, 
+              req.body.birthDate,
+              req.body.deathDate,
               req.body.sex,
               req.body.profession,
               req.body.country,
@@ -118,25 +121,40 @@ app.get("/quotes", async function(req, res){
 
 app.get("/quote/new", async (req,res) => {
   let sql = `SELECT authorId, firstName, lastName FROM q_authors ORDER BY lastName`
-  const [authorRows] = await pool.query(sql)
+  const [authors] = await pool.query(sql)
 
-  res.render("newQuote", {"authors": authorRows})
+  sql = `SELECT DISTINCT category FROM q_quotes ORDER BY category`;
+  const [categories] = await pool.query(sql)
+
+  res.render("newQuote", {authors, categories})
 });
 
 app.post("/quote/new", async function(req, res){
   let quote = req.body.quote;
   let authorId = req.body.authorId;
   let category = req.body.category;
-  let sql = `INSERT INTO q_quotes
+  let new_category = req.body.new_category;
+  if (new_category) {
+    category = new_category;
+  }
+
+  let sql = `SELECT authorId, firstName, lastName FROM q_authors ORDER BY lastName`
+  const [authors] = await pool.query(sql)
+
+  sql = `SELECT DISTINCT category FROM q_quotes ORDER BY category`;
+  const [categories] = await pool.query(sql)
+
+  if (!category) {
+    res.render("newQuote", {authors, categories, "message": "You must supply a category"});
+    return;
+  }
+
+  sql = `INSERT INTO q_quotes
              (quote, authorId, category)
               VALUES (?, ?, ?)`;
   let params = [quote, authorId, category];
   const [rows] = await pool.query(sql, params);
-
-  sql = `SELECT authorId, firstName, lastName FROM q_authors ORDER BY lastName`
-  const [authorRows] = await pool.query(sql)
-  res.render("newQuote",
-             {"message": "Quote added!", "authors": authorRows});
+  res.render("newQuote", {authors, categories, "message": "Quote added!"});
 });
 
 app.get("/quote/edit", async function(req, res){
@@ -148,23 +166,39 @@ app.get("/quote/edit", async function(req, res){
   const [rows] = await pool.query(sql, quoteId);
 
   sql = `SELECT authorId, firstName, lastName FROM q_authors ORDER BY lastName`
-  const [authorRows] = await pool.query(sql)
+  const [authors] = await pool.query(sql)
 
-  res.render("editQuote", {"quote": rows[0], "authors": authorRows});
+  sql = `SELECT DISTINCT category FROM q_quotes ORDER BY category`;
+  const [categories] = await pool.query(sql)
+
+  res.render("editQuote", {"quote": rows[0], authors, categories});
 });
 
 app.post("/quote/edit", async function(req, res){
-  let sql = `UPDATE q_quotes
+
+  let category = req.body.category;
+  let new_category = req.body.new_category;
+  if (new_category) {
+    category = new_category;
+  }
+
+  let sql = `SELECT DISTINCT category FROM q_quotes ORDER BY category`;
+  const [categories] = await pool.query(sql)
+  if (!category) {
+    res.render("editQuote", {authors, categories, "message": "You must supply a category"});
+    return;
+  }
+
+  sql = `UPDATE q_quotes
             SET quote = ?,
                 authorId = ?,
                 category = ?
             WHERE quoteId =  ?`;
-
   let params = [req.body.quote,
-              req.body.authorId, req.body.category,
+              req.body.authorId, category,
               req.body.quoteId];
-  console.log(params)
   const [rows] = await pool.query(sql,params);
+
   res.redirect("/quotes");
 });
 
